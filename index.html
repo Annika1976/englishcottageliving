@@ -30,6 +30,38 @@
       line-height: 1.7;
     }
 
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-bar {
+      background: var(--green-dark);
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid #4a6741;
+      border-radius: 3px;
+      padding: 0.3rem 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--cream-warm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .lang-btn:hover {
+      border-color: #a8c4a0;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .lang-btn .flag { font-size: 1.1rem; line-height: 1; }
+
     /* ── HEADER ── */
     header {
       background: var(--green-dark);
@@ -207,13 +239,6 @@
 
     .product-link:hover { background: var(--green-mid); }
 
-    .product-link.placeholder {
-      background: var(--border);
-      color: var(--text-light);
-      cursor: default;
-      pointer-events: none;
-    }
-
     /* ── COMING SOON CARD ── */
     .coming-soon {
       background: var(--cream-warm);
@@ -264,180 +289,374 @@
       .product-grid { grid-template-columns: 1fr; }
       header { padding: 2.5rem 1rem 2rem; }
     }
+
+    /* ── LANGUAGE VISIBILITY ── */
+    [data-lang]               { display: none; }
+    .lang-en [data-lang="en"] { display: revert; }
+    .lang-de [data-lang="de"] { display: revert; }
+    span[data-lang], a[data-lang] { display: inline; }
+    .lang-en span[data-lang="de"],
+    .lang-en a[data-lang="de"]    { display: none; }
+    .lang-de span[data-lang="en"],
+    .lang-de a[data-lang="en"]    { display: none; }
+
+    /* product card blocks per language */
+    .card-en, .card-de { display: none; }
+    .lang-en .card-en  { display: flex; }
+    .lang-de .card-de  { display: flex; }
+    .grid-en, .grid-de { display: none; }
+    .lang-en .grid-en  { display: grid; }
+    .lang-de .grid-de  { display: grid; }
+    .grid-en, .grid-de {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .subhead-en, .subhead-de { display: none; }
+    .lang-en .subhead-en { display: block; }
+    .lang-de .subhead-de { display: block; }
   </style>
 </head>
-<body>
+<body class="lang-en">
+
+  <!-- ── LANGUAGE BAR ── -->
+  <div class="lang-bar">
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()" title="Sprache wechseln / Switch language">
+      <span class="flag" id="flagIcon">&#127465;&#127466;</span>
+      <span id="langLabel">Deutsch</span>
+    </button>
+  </div>
 
   <header>
-    <p class="header-eyebrow">Curated for cottage gardeners</p>
-    <h1>My Favourite<br>Amazon Finds</h1>
-    <p>Beautiful, well-made tools and accessories for the cottage garden &amp; home — everything I genuinely love and recommend.</p>
+    <p class="header-eyebrow">
+      <span data-lang="en">Curated for cottage gardeners</span>
+      <span data-lang="de">Handverlesen für Cottage-Gärtnerinnen</span>
+    </p>
+    <h1>
+      <span data-lang="en">My Favourite<br>Amazon Finds</span>
+      <span data-lang="de">Meine liebsten<br>Amazon-Empfehlungen</span>
+    </h1>
+    <p>
+      <span data-lang="en">Beautiful, well-made tools and accessories for the cottage garden &amp; home — everything I genuinely love and recommend.</span>
+      <span data-lang="de">Schöne, hochwertige Werkzeuge und Accessoires für den Cottage-Garten &amp; das Zuhause — alles, was ich wirklich liebe und empfehle.</span>
+    </p>
     <span class="handle">@englishcottageliving</span>
   </header>
 
   <div class="affiliate-notice">
-    As an Amazon Associate I earn from qualifying purchases. &nbsp;·&nbsp; All links marked (ad) are affiliate links.
+    <span data-lang="en">As an Amazon Associate I earn from qualifying purchases. &nbsp;·&nbsp; All links marked (ad) are affiliate links.</span>
+    <span data-lang="de">Als Amazon-Partner verdiene ich an qualifizierten Käufen. &nbsp;·&nbsp; Alle mit (Werbung) markierten Links sind Affiliate-Links.</span>
   </div>
 
   <div class="intro">
-    <h2>Handpicked with care, not clicks.</h2>
-    <p>I only share things I would use in my own garden. Click any link below to shop on Amazon UK — at no extra cost to you.</p>
+    <h2>
+      <span data-lang="en">Handpicked with care, not clicks.</span>
+      <span data-lang="de">Mit Herz ausgewählt, nicht mit Algorithmus.</span>
+    </h2>
+    <p>
+      <span data-lang="en">I only share things I would use in my own garden. Click any link below to shop on Amazon UK — at no extra cost to you.</span>
+      <span data-lang="de">Ich teile nur Dinge, die ich selbst in meinem Garten verwende. Klick auf einen Link, um bei Amazon DE einzukaufen — ohne Aufpreis für dich.</span>
+    </p>
   </div>
   <div class="divider"></div>
 
-  <!-- ── WATERING TOOLS ── -->
+  <!-- ══════════════════════════════════════════
+       WATERING TOOLS
+  ══════════════════════════════════════════ -->
   <section class="section">
     <div class="section-header">
-      <h3>🪣 Watering Tools</h3>
-      <span class="section-tag">Garden Essentials</span>
+      <h3>&#129507;
+        <span data-lang="en">Watering Tools</span>
+        <span data-lang="de">Giesswerkzeug</span>
+      </h3>
+      <span class="section-tag">
+        <span data-lang="en">Garden Essentials</span>
+        <span data-lang="de">Gartengrundausstattung</span>
+      </span>
     </div>
-    <div class="product-grid">
 
-      <div class="product-card">
+    <!-- EN cards -->
+    <div class="grid-en">
+
+      <div class="product-card card-en">
         <span class="product-label">Watering Can · (ad)</span>
         <h4>HAWS Long Reach Galvanised Watering Can — 8.8L</h4>
         <p>A true garden heirloom. Perfectly balanced, galvanised steel with a brass rose for the gentlest shower on seedlings and borders. Lasts decades.</p>
         <a class="product-link" href="https://amzn.to/4uxbi06" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Watering Can · (ad)</span>
         <h4>HAWS Deluxe 5L Watering Can — Green</h4>
         <p>Lightweight but incredibly tough, Made in Britain. Includes a fine spray brass rose and a down spout for precision watering. My everyday garden companion.</p>
         <a class="product-link" href="https://amzn.to/4amaTpS" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Hose Reel · (ad)</span>
         <h4>Hozelock Compact 2-in-1 Hose Reel — 25m</h4>
         <p>Wall-mounted or freestanding. Enclosed casing protects the hose beautifully. Compact, easy to rewind — the most practical hose reel I've found for a cottage garden.</p>
         <a class="product-link" href="https://amzn.to/4e3tklt" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Spray Gun · (ad)</span>
         <h4>Hozelock Multi-Jet Spray Gun — 5 Patterns</h4>
         <p>From a fine rose for seedlings to a strong jet for paths. Lockable trigger, ergonomic handle. Works with the full Hozelock system.</p>
         <a class="product-link" href="https://amzn.to/4ge0wrU" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Watering Lance · (ad)</span>
         <h4>Hozelock Telescopic Watering Lance Plus 140</h4>
-        <p>Extends from 90cm to 140cm — perfect for hanging baskets, tall borders and greenhouse shelves. Adjustable multi-jet head with 7 spray patterns and flow control. A cottage garden essential.</p>
+        <p>Extends from 90cm to 140cm — perfect for hanging baskets, tall borders and greenhouse shelves. Adjustable multi-jet head with 7 spray patterns and flow control.</p>
         <a class="product-link" href="https://amzn.to/3QvMCXL" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
     </div>
+
+    <!-- DE cards -->
+    <div class="grid-de">
+
+      <div class="product-card card-de">
+        <span class="product-label">Giesskanne · (Werbung)</span>
+        <h4>HAWS Original englische Giesskanne 4,5L Grün</h4>
+        <p>Handgefertigt seit 1886 in England. Perfekt ausbalanciert, mit feiner Messingbrause für sanftes Giessen von Sämlingen und Beeten. Ein echtes Erbstück für den Garten.</p>
+        <a class="product-link" href="https://amzn.to/3SDUZB3" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Giesskanne · (Werbung)</span>
+        <h4>HAWS Bearwood Brook Giesskanne 9L Grün</h4>
+        <p>Grosses Volumen für weitläufige Beete. Galvanisierter Stahl mit Messingbrause — robust, langlebig und wunderschön. Ein klassisches englisches Gartenstück.</p>
+        <a class="product-link" href="https://amzn.to/4urOTRz" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Schlauchbox · (Werbung)</span>
+        <h4>Hozelock Kompakte Schlauchbox 2in1 — 25m</h4>
+        <p>Tragbar oder wandmontiert. Leichter Aufrollmechanismus, geliefert mit Schlauchspritze und allen Anschlüssen. Praktisch, kompakt, sofort einsatzbereit.</p>
+        <a class="product-link" href="https://amzn.to/4aKaNII" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Sprühpistole · (Werbung)</span>
+        <h4>Hozelock Ultramax Pro Metall-Brausepistole</h4>
+        <p>Druckgegossenes Metallgehäuse, 7 Strahlbilder, Verriegelungs- und Durchflussregelung. Ergonomisch, äusserst robust — für intensive Nutzung und präzise Bewässerung.</p>
+        <a class="product-link" href="https://amzn.to/4oo5CUy" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Giesslanze · (Werbung)</span>
+        <h4>Hozelock Teleskopische Sprühlanze Plus 140</h4>
+        <p>Von 90 auf 140 cm ausfahrbar — ideal für Hängekörbe, hohe Beete und Gewächshausregale. 7 Strahlarten, schwenkbarer Kopf, Durchflussregelung. Ein Muss für den Cottage-Garten.</p>
+        <a class="product-link" href="https://amzn.to/4fJX5sY" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+    </div>
   </section>
 
-  <!-- ── GARDEN TOOLS ── -->
+  <!-- ══════════════════════════════════════════
+       GARDEN TOOLS
+  ══════════════════════════════════════════ -->
   <section class="section">
     <div class="section-header">
-      <h3>🌿 Garden Tools</h3>
-      <span class="section-tag">Coming Soon</span>
+      <h3>&#127807;
+        <span data-lang="en">Garden Tools</span>
+        <span data-lang="de">Gartengeräte</span>
+      </h3>
+      <span class="section-tag">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="de">Demnächst</span>
+      </span>
     </div>
     <div class="product-grid">
-      <div class="coming-soon">✦ &nbsp;More recommendations coming soon — check back after the next season.</div>
+      <div class="coming-soon">&#10022; &nbsp;
+        <span data-lang="en">More recommendations coming soon — check back after the next season.</span>
+        <span data-lang="de">Weitere Empfehlungen folgen bald — schau nach der nächsten Saison wieder vorbei.</span>
+      </div>
     </div>
   </section>
 
-  <!-- ── SEEDS ── -->
+  <!-- ══════════════════════════════════════════
+       SEEDS
+  ══════════════════════════════════════════ -->
   <section class="section">
     <div class="section-header">
-      <h3>🌱 Seeds</h3>
-      <span class="section-tag">With Sowing Guide</span>
+      <h3>&#127807;
+        <span data-lang="en">Seeds</span>
+        <span data-lang="de">Samen</span>
+      </h3>
+      <span class="section-tag">
+        <span data-lang="en">With Sowing Guide</span>
+        <span data-lang="de">Mit Aussaatanleitung</span>
+      </span>
     </div>
 
-    <h4 style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">🌼 Wildflower Mixes</h4>
-    <div class="product-grid" style="margin-bottom:2rem;">
+    <!-- Wildflower subheading -->
+    <h4 class="subhead-en" style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">&#127804; Wildflower Mixes</h4>
+    <h4 class="subhead-de" style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">&#127804; Wildblumenmischungen</h4>
 
-      <div class="product-card">
+    <!-- EN wildflower -->
+    <div class="grid-en" style="margin-bottom:2rem;">
+
+      <div class="product-card card-en">
         <span class="product-label">Wildflower Mix · (ad)</span>
         <h4>Mr Fothergill's RHS Cottage Garden Seed Mix</h4>
         <p>A classic blend of traditional cottage garden favourites — bee-friendly, colourful and easy to grow. Perfect for borders and cutting gardens.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: March–May or September–October</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: March–May or September–October</p>
         <a class="product-link" href="https://amzn.to/43pBdf0" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Wildflower Mix · (ad)</span>
         <h4>Pronto Seed Wild Flowers Cottage Garden Mix</h4>
         <p>Native British blooms in a scatter-and-grow mix. No grass fillers — just pure wildflower colour for meadow areas, borders and wildlife gardens.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: March–May or September–October</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: March–May or September–October</p>
         <a class="product-link" href="https://amzn.to/49TyVII" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
     </div>
 
-    <h4 style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">🌿 Cottage Garden Classics</h4>
-    <div class="product-grid">
+    <!-- DE wildflower -->
+    <div class="grid-de" style="margin-bottom:2rem;">
 
-      <div class="product-card">
+      <div class="product-card card-de">
+        <span class="product-label">Wildblumenmix · (Werbung)</span>
+        <h4>SAFLAX Wildblumen Cottage Garden Mix — 1000 Samen</h4>
+        <p>21 Sorten lässiger Cottage-Garten-Klassiker aus England — für Garten, Kübel und Blumenkasten. Qualitätssaatgut aus Deutschland, bienenfreundlich und bunt.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: März–Mai oder September–Oktober</p>
+        <a class="product-link" href="https://amzn.to/4v3j9mV" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+    </div>
+
+    <!-- Classics subheading -->
+    <h4 class="subhead-en" style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">&#127807; Cottage Garden Classics</h4>
+    <h4 class="subhead-de" style="font-family:'Lora',serif; font-size:1rem; color:var(--green-dark); margin-bottom:1rem; font-weight:600;">&#127807; Cottage-Garten-Klassiker</h4>
+
+    <!-- EN classics -->
+    <div class="grid-en">
+
+      <div class="product-card card-en">
         <span class="product-label">Annual · (ad)</span>
         <h4>Sweet Pea Seeds — Thompson &amp; Morgan</h4>
         <p>A cottage garden essential. Delicate, fragrant blooms in romantic shades — the more you pick, the more they flower. Grow up a wigwam of hazel poles.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: January–March (indoors)</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: January–March (indoors)</p>
         <a class="product-link" href="https://amzn.to/3PYtSA2" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Biennial · (ad)</span>
         <h4>Foxglove Seeds Mixed — Mr Fothergill's</h4>
         <p>Tall, stately spires of bell-shaped blooms in soft pinks, purples and cream. Magnets for bees. A timeless cottage garden classic that self-seeds gently.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: May–July (for next year)</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: May–July (for next year)</p>
         <a class="product-link" href="https://amzn.to/4owoHUD" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Perennial · (ad)</span>
         <h4>Delphinium Seeds — Thompson &amp; Morgan</h4>
         <p>Majestic spires of deep blue, violet and white — the backbone of any cottage border. Long-lived perennials that reward with stunning summer height.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: February–April (indoors)</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: February–April (indoors)</p>
         <a class="product-link" href="https://amzn.to/4xdphum" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Biennial / Perennial · (ad)</span>
         <h4>Hollyhock Seeds — Mr Fothergill's</h4>
         <p>Quintessential cottage charm. Tall, dramatic spires of satiny blooms in rich pinks and reds. Stunning against stone walls and fences.</p>
-        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">🗓 Sow: February–April (indoors)</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Sow: February–April (indoors)</p>
         <a class="product-link" href="https://amzn.to/43tS1l6" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
+      </div>
+
+    </div>
+
+    <!-- DE classics -->
+    <div class="grid-de">
+
+      <div class="product-card card-de">
+        <span class="product-label">Einjährig · (Werbung)</span>
+        <h4>Magic Garden Seeds Duftwicke — Lathyrus odoratus</h4>
+        <p>Zarte, duftende Blüten in romantischen Farben — je mehr du pflückst, desto mehr blühen sie. Schnittgeeignet, ideal an Kletterhilfen und Haselruten-Tipis.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: Januar–März (drinnen)</p>
+        <a class="product-link" href="https://amzn.to/4e8A41D" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Zweijährig · (Werbung)</span>
+        <h4>Kiepenkerl Fingerhut Excelsior-Hybriden</h4>
+        <p>Hohe Blütenähren in zartem Rosa, Lila und Creme — Bienenmagneten. Ein zeitloser Cottage-Klassiker, der sich sanft selbst aussät. Qualitätssaatgut seit 1925.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: Mai–Juli (für nächstes Jahr)</p>
+        <a class="product-link" href="https://amzn.to/4e6Dwd1" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Zweijährig · (Werbung)</span>
+        <h4>Kiepenkerl Fingerhut Wildes Waldglöckchen</h4>
+        <p>Zierliche Fingerhutart mit kleinen, glöckchenförmigen Blüten — ideal für naturnahe Gärten und schattige Bereiche. Selbstaussäend, pflegeleicht, sehr bienenfreundlich.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: Mai–Juli (für nächstes Jahr)</p>
+        <a class="product-link" href="https://amzn.to/43CnXUm" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Zwei-/Mehrjährig · (Werbung)</span>
+        <h4>Kiepenkerl Stockrosen Chaters Mischung</h4>
+        <p>Quintessenz des Cottage-Charmes. Hohe, gefüllte Blütenähren in satten Farben — wunderschön vor Steinmauern und Zäunen. Klassisches Bauerngartenbild.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: Februar–April (drinnen)</p>
+        <a class="product-link" href="https://amzn.to/4e6RJGX" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Mehrjährig · (Werbung)</span>
+        <h4>Sperli Rittersporn mehrjährig Mischung</h4>
+        <p>Majestätische Blütenähren in Tiefblau, Violett und Weiss — das Rückgrat jedes Cottage-Beets. Langlebige Stauden mit beeindruckender Sommerhöhe.</p>
+        <p style="font-size:0.75rem; color:var(--green-soft); margin-top:0.3rem;">&#128197; Aussaat: Februar–April (drinnen)</p>
+        <a class="product-link" href="https://amzn.to/4fJCbKs" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
       </div>
 
     </div>
   </section>
 
-  <!-- ── BOOKS ── -->
+  <!-- ══════════════════════════════════════════
+       BOOKS
+  ══════════════════════════════════════════ -->
   <section class="section">
     <div class="section-header">
-      <h3>📚 Books</h3>
-      <span class="section-tag">Cottage Garden Favourites</span>
+      <h3>&#128218;
+        <span data-lang="en">Books</span>
+        <span data-lang="de">Bücher</span>
+      </h3>
+      <span class="section-tag">
+        <span data-lang="en">Cottage Garden Favourites</span>
+        <span data-lang="de">Cottage-Garten-Lieblinge</span>
+      </span>
     </div>
-    <div class="product-grid">
 
-      <div class="product-card">
+    <!-- EN books -->
+    <div class="grid-en">
+
+      <div class="product-card card-en">
         <span class="product-label">Craft &amp; Botanical · (ad)</span>
         <h4>The Pressed Flower Handbook</h4>
         <p>Simple methods for connecting with nature and preserving garden beauty through the seasons. Grow, gather, press and create — a beautiful guide for cottage gardeners.</p>
         <a class="product-link" href="https://amzn.to/4ooRGtp" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Garden Photography · (ad)</span>
         <h4>Vintage Roses</h4>
         <p>A beautiful photographic guide to growing and cutting heritage rose varieties for the home and garden. Lush, inspiring and utterly romantic.</p>
         <a class="product-link" href="https://amzn.to/4arp50N" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">Garden Design · (ad)</span>
         <h4>The Modern Cottage Garden — Greg Loades</h4>
         <p>A fresh take on the classic English cottage garden — packed with planting ideas, design principles and plant combinations for contemporary spaces.</p>
         <a class="product-link" href="https://amzn.to/4fEalPN" target="_blank" rel="noopener sponsored">Shop on Amazon UK</a>
       </div>
 
-      <div class="product-card">
+      <div class="product-card card-en">
         <span class="product-label">National Trust · (ad)</span>
         <h4>How to Create Beautiful Flowerbeds &amp; Borders</h4>
         <p>Expert advice and inspiration from the National Trust — covering design, plant selection, and seasonal planting for stunning flowerbeds year-round.</p>
@@ -445,16 +664,53 @@
       </div>
 
     </div>
+
+    <!-- DE books -->
+    <div class="grid-de">
+
+      <div class="product-card card-de">
+        <span class="product-label">Gartengestaltung · (Werbung)</span>
+        <h4>Mein wunderbarer Cottage-Garten — Isabelle Van Groeningen</h4>
+        <p>Gartenbuchpreis 2025. Eine Einladung in die Welt der englischen Cottage-Gärten — mit praktischen Tipps zur Gestaltung, Bepflanzung und Pflege durch alle Jahreszeiten.</p>
+        <a class="product-link" href="https://amzn.to/43Co4zg" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Cottage-Garten · (Werbung)</span>
+        <h4>Ich träume von einem Cottage Garten — Mark Bolton</h4>
+        <p>Verliebt in Rittersporn, Phlox und Fingerhut. Schritt für Schritt den eigenen Cottage-Garten gestalten und pflegen — mit inspirierenden Fotos und saisonalen Ratschlägen.</p>
+        <a class="product-link" href="https://amzn.to/4vMbwBd" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+      <div class="product-card card-de">
+        <span class="product-label">Gartengestaltung · (Werbung)</span>
+        <h4>Landhausgärten — Borkowski &amp; Syren</h4>
+        <p>Gestaltung und Bepflanzung im romantischen Landhausstil — voller Ideen für Beete, Wege und Pflanzenkombinationen. Ein wunderschöner Ratgeber für alle, die englische Gärten lieben.</p>
+        <a class="product-link" href="https://amzn.to/3QAC2Pf" target="_blank" rel="noopener sponsored">Bei Amazon DE kaufen</a>
+      </div>
+
+    </div>
   </section>
 
-  <!-- ── HOME & DECOR ── -->
+  <!-- ══════════════════════════════════════════
+       HOME & DECOR
+  ══════════════════════════════════════════ -->
   <section class="section">
     <div class="section-header">
-      <h3>🏡 Home &amp; Décor</h3>
-      <span class="section-tag">Coming Soon</span>
+      <h3>&#127968;
+        <span data-lang="en">Home &amp; Décor</span>
+        <span data-lang="de">Wohnen &amp; Dekoration</span>
+      </h3>
+      <span class="section-tag">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="de">Demnächst</span>
+      </span>
     </div>
     <div class="product-grid">
-      <div class="coming-soon">✦ &nbsp;Cottage-style home accessories and décor finds — coming soon.</div>
+      <div class="coming-soon">&#10022; &nbsp;
+        <span data-lang="en">Cottage-style home accessories and décor finds — coming soon.</span>
+        <span data-lang="de">Cottage-Wohnaccessoires und Dekoideen — demnächst verfügbar.</span>
+      </div>
     </div>
   </section>
 
@@ -468,13 +724,38 @@
       <a href="https://www.etsy.com/shop/EnglishCottageLiving" target="_blank" rel="noopener">Etsy Shop</a>
     </div>
     <div class="disclaimer-box">
-      <strong style="color: var(--cream);">Affiliate Disclosure</strong><br>
-      As an Amazon Associate I earn from qualifying purchases. This means if you click a link and make a purchase, I may receive a small commission — at no extra cost to you. I only recommend products I genuinely love and believe in. Prices shown on Amazon may vary from when this page was last updated.
+      <strong style="color: var(--cream);">
+        <span data-lang="en">Affiliate Disclosure</span>
+        <span data-lang="de">Affiliate-Hinweis</span>
+      </strong><br>
+      <span data-lang="en">As an Amazon Associate I earn from qualifying purchases. This means if you click a link and make a purchase, I may receive a small commission — at no extra cost to you. I only recommend products I genuinely love and believe in. Prices shown on Amazon may vary from when this page was last updated.</span>
+      <span data-lang="de">Als Amazon-Partner verdiene ich an qualifizierten Käufen. Das bedeutet: Wenn du auf einen Link klickst und etwas kaufst, erhalte ich möglicherweise eine kleine Provision — ohne Mehrkosten für dich. Ich empfehle nur Produkte, von denen ich wirklich überzeugt bin. Die auf Amazon angezeigten Preise können von denen zum Zeitpunkt der letzten Aktualisierung dieser Seite abweichen.</span>
     </div>
     <div style="margin-top: 1.2rem; font-size: 0.68rem; color: #4a6741;">
-      © 2026 English Cottage Living &nbsp;·&nbsp; englishcottageliving@gmail.com
+      &copy; 2026 English Cottage Living &nbsp;&middot;&nbsp; englishcottageliving@gmail.com
     </div>
   </footer>
+
+  <script>
+    var currentLang = 'en';
+
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'de' : 'en';
+      document.body.className = 'lang-' + currentLang;
+      document.documentElement.lang = currentLang;
+
+      var flagIcon  = document.getElementById('flagIcon');
+      var langLabel = document.getElementById('langLabel');
+
+      if (currentLang === 'de') {
+        flagIcon.innerHTML   = '&#127468;&#127463;';
+        langLabel.textContent = 'English';
+      } else {
+        flagIcon.innerHTML   = '&#127465;&#127466;';
+        langLabel.textContent = 'Deutsch';
+      }
+    }
+  </script>
 
 </body>
 </html>
