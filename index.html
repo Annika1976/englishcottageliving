@@ -46,71 +46,98 @@
   }
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
---green-dark: #1a2e1a;
+--green-dark: #1f3320;
 --green-mid: #2d4a2d;
 --green-soft: #4a6741;
+--sage: #7B9E7B;
+--sage-light: #a8c4a0;
 --cream: #F5F0E8;
 --cream-warm: #EDE5D0;
---text-dark: #1e1e1e;
---text-mid: #3a3a3a;
---text-light: #6b6b6b;
---border: #d4cbbf;
+--paper: #FBF8F2;
+--terracotta: #93635B;
+--terracotta-dark: #7a524b;
+--rose: #C4847A;
+--text-dark: #2e241d;
+--text-mid: #4a3d33;
+--text-light: #7a6b5e;
+--border: #ddd3c4;
 }
-html { scroll-behavior: smooth; }
-body { background: var(--cream); color: var(--text-dark); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.7; }
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+body { background: var(--cream); color: var(--text-dark); font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
 /* LANGUAGE BAR */
 .lang-bar { background: var(--green-dark); display: flex; justify-content: flex-end; padding: 0.5rem 1.5rem; }
-.lang-btn { background: none; border: 1px solid #4a6741; border-radius: 3px; padding: 0.3rem 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.45rem; color: var(--cream-warm); font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.08em; transition: border-color 0.2s, background 0.2s; }
-.lang-btn:hover { border-color: #a8c4a0; background: rgba(255,255,255,0.06); }
+.lang-btn { background: none; border: 1px solid var(--green-soft); border-radius: 3px; padding: 0.3rem 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.45rem; color: var(--cream-warm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; transition: border-color 0.2s, background 0.2s; }
+.lang-btn:hover { border-color: var(--sage-light); background: rgba(255,255,255,0.06); }
 .lang-btn .flag { font-size: 1.1rem; line-height: 1; }
 
 /* HEADER */
-header { background: var(--green-dark); text-align: center; padding: 3.5rem 1.5rem 3rem; border-bottom: 3px solid var(--green-soft); }
-.header-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-soft); margin-bottom: 0.9rem; }
-header h1 { font-family: 'Lora', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem; }
-header p { font-size: 0.95rem; color: #a8c4a0; max-width: 480px; margin: 0 auto 1.6rem; }
-.handle { display: inline-block; font-size: 0.78rem; letter-spacing: 0.12em; color: var(--cream-warm); border: 1px solid #4a6741; padding: 0.35rem 1rem; border-radius: 2px; }
+header { background: var(--green-dark); text-align: center; padding: 3.25rem 1.5rem 3rem; }
+.header-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-light); margin-bottom: 1rem; }
+header h1 { font-family: 'Lora', serif; font-size: clamp(2.1rem, 5.5vw, 3.25rem); font-weight: 500; color: var(--cream); line-height: 1.15; margin-bottom: 1rem; }
+header p { font-size: 1.02rem; color: #cfdcc9; max-width: 500px; margin: 0 auto 1.6rem; }
+.handle { display: inline-block; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--cream-warm); border: 1px solid var(--green-soft); padding: 0.35rem 1rem; border-radius: 2px; }
+.sprig { display: block; width: 46px; height: 46px; margin: 0 auto 1rem; color: var(--sage); }
 
 /* AFFILIATE NOTICE */
-.affiliate-notice { background: var(--green-mid); text-align: center; padding: 0.75rem 1.5rem; font-size: 0.75rem; color: #a8c4a0; letter-spacing: 0.04em; }
+.affiliate-notice { background: var(--cream-warm); text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+
+/* JUMP NAV */
+.jump-nav { position: sticky; top: 0; z-index: 10; background: var(--cream); border-bottom: 1px solid var(--border); box-shadow: 0 1px 0 rgba(46,36,29,0.03); }
+.jump-nav ul { list-style: none; display: flex; gap: 0.25rem 1.6rem; max-width: 900px; margin: 0 auto; padding: 0.8rem 1.5rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.jump-nav ul::-webkit-scrollbar { display: none; }
+.jump-nav a { font-family: 'Lora', serif; font-size: 0.98rem; color: var(--text-mid); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.jump-nav a:hover { color: var(--terracotta); border-color: var(--rose); }
 
 /* INTRO */
 .intro { max-width: 640px; margin: 3.5rem auto 0; padding: 0 1.5rem; text-align: center; }
-.intro h2 { font-family: 'Lora', serif; font-size: 1.45rem; font-weight: 400; font-style: italic; color: var(--green-dark); margin-bottom: 0.9rem; }
-.intro p { font-size: 0.9rem; color: var(--text-mid); max-width: 520px; margin: 0 auto; }
-.divider { width: 48px; height: 2px; background: var(--green-soft); margin: 2rem auto; }
+.intro h2 { font-family: 'Lora', serif; font-size: clamp(1.5rem, 3.5vw, 1.85rem); font-weight: 400; font-style: italic; color: var(--green-dark); margin-bottom: 0.9rem; }
+.intro p { font-size: 1rem; color: var(--text-mid); max-width: 540px; margin: 0 auto; }
+.divider { width: 48px; height: 1px; background: var(--rose); margin: 2.5rem auto 0.5rem; }
 
 /* SECTIONS */
-.section { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); }
+.section { max-width: 900px; margin: 0 auto; padding: 3.5rem 1.5rem; border-bottom: 1px solid var(--border); }
 .section:last-of-type { border-bottom: none; }
-.section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
-.section-header h3 { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; color: var(--green-dark); }
-.section-tag { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); }
+.section-header { margin-bottom: 2rem; }
+.section-header h3 { font-family: 'Lora', serif; font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 500; color: var(--green-dark); line-height: 1.2; display: flex; align-items: center; gap: 0.7rem; }
+.section-header h3::before { content: ""; flex: none; width: 26px; height: 26px; background: var(--sage); -webkit-mask: var(--sprig) center / contain no-repeat; mask: var(--sprig) center / contain no-repeat; }
+:root { --sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 30V6'/%3E%3Cpath d='M16 10c-3-3-7-3-9-2 1 3 5 5 9 4'/%3E%3Cpath d='M16 10c3-3 7-3 9-2-1 3-5 5-9 4'/%3E%3Cpath d='M16 18c-3-3-8-3-10-1 1 3 6 5 10 3'/%3E%3Cpath d='M16 18c3-3 8-3 10-1-1 3-6 5-10 3'/%3E%3Cpath d='M16 6c-1-2 0-4 0-4s1 2 0 4'/%3E%3C/svg%3E"); }
+.section-tag { display: block; margin-top: 0.45rem; padding-left: calc(26px + 0.7rem); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); }
+.section .subhead-en, .section .subhead-de { font-family: 'Lora', serif; }
 
 /* PRODUCT GRID */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
-.product-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 1.4rem 1.3rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; transition: box-shadow 0.2s ease, border-color 0.2s ease; }
-.product-card:hover { box-shadow: 0 4px 18px rgba(26,46,26,0.09); border-color: var(--green-soft); }
-.product-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-soft); font-weight: 400; }
-.product-card h4 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); line-height: 1.35; }
-.product-card p { font-size: 0.82rem; color: var(--text-mid); flex-grow: 1; }
-.sow-note { font-size: 0.75rem; color: var(--green-soft); margin-top: 0.3rem; }
-.product-link { display: inline-block; margin-top: 0.6rem; padding: 0.55rem 1.1rem; background: var(--green-dark); color: var(--cream); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: background 0.2s ease; align-self: flex-start; }
-.product-link:hover { background: var(--green-mid); }
+.product-card { background: var(--paper); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 1.4rem 1.35rem; display: flex; flex-direction: column; gap: 0.55rem; transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+.product-card:hover { box-shadow: 0 6px 20px rgba(46,36,29,0.08); border-color: var(--sage); transform: translateY(-2px); }
+.product-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-soft); font-weight: 500; }
+.product-card h4 { font-family: 'Lora', serif; font-size: 1.12rem; font-weight: 600; color: var(--text-dark); line-height: 1.35; }
+.product-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-mid); flex-grow: 1; }
+.sow-note { font-size: 0.85rem; color: var(--green-soft); margin-top: 0.3rem; }
+.product-link { display: inline-block; margin-top: 0.7rem; padding: 0.6rem 1.15rem; background: var(--terracotta); color: #fff8f0; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--terracotta); border-radius: 2px; transition: background 0.2s ease, color 0.2s ease; align-self: flex-start; }
+.product-link:hover { background: var(--terracotta-dark); border-color: var(--terracotta-dark); }
+/* Blog-post cards (links without rel="sponsored") get a quieter outlined button */
+.product-link:not([rel~="sponsored"]) { background: transparent; color: var(--green-dark); border-color: var(--green-soft); }
+.product-link:not([rel~="sponsored"]):hover { background: var(--green-dark); color: var(--cream); }
+.product-card:has(.product-link:not([rel~="sponsored"])) { background: #fff; border-left: 3px solid var(--sage); }
 
 /* FOOTER */
-footer { background: var(--green-dark); color: #7a9e7a; text-align: center; padding: 2.5rem 1.5rem; font-size: 0.75rem; line-height: 1.8; }
-footer .footer-brand { font-family: 'Lora', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.8rem; }
-footer a { color: #a8c4a0; text-decoration: none; }
+footer { background: var(--green-dark); color: var(--sage-light); text-align: center; padding: 2.75rem 1.5rem; font-size: 0.82rem; line-height: 1.8; }
+footer .footer-brand { font-family: 'Lora', serif; font-size: 1.15rem; color: var(--cream); margin-bottom: 0.8rem; }
+footer a { color: var(--cream-warm); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
-.disclaimer-box { max-width: 580px; margin: 1.2rem auto 0; padding: 1rem 1.2rem; border: 1px solid #2d4a2d; border-radius: 2px; font-size: 0.72rem; color: #7a9e7a; line-height: 1.7; }
+.disclaimer-box { max-width: 580px; margin: 1.2rem auto 0; padding: 1rem 1.2rem; border: 1px solid var(--green-mid); border-radius: 2px; font-size: 0.78rem; color: var(--sage-light); line-height: 1.7; }
 
-@media (max-width: 500px) { .product-grid { grid-template-columns: 1fr; } header { padding: 2.5rem 1rem 2rem; } }
+@media (max-width: 500px) {
+  .product-grid, .grid-en, .grid-de { grid-template-columns: 1fr !important; }
+  header { padding: 2.5rem 1rem 2.25rem; }
+  .section { padding: 2.75rem 1rem; }
+  .jump-nav ul { padding: 0.75rem 1rem; }
+  .section-tag { padding-left: 0; }
+}
 
 /* LANGUAGE VISIBILITY */
 [data-lang] { display: none; }
@@ -141,6 +168,7 @@ span[data-lang], a[data-lang] { display: inline; }
 </div>
 
 <header>
+<svg class="sprig" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 30V6"/><path d="M16 10c-3-3-7-3-9-2 1 3 5 5 9 4"/><path d="M16 10c3-3 7-3 9-2-1 3-5 5-9 4"/><path d="M16 18c-3-3-8-3-10-1 1 3 6 5 10 3"/><path d="M16 18c3-3 8-3 10-1-1 3-6 5-10 3"/><path d="M16 6c-1-2 0-4 0-4s1 2 0 4"/></svg>
 <p class="header-eyebrow">
 <span data-lang="en">Curated for cottage gardeners</span>
 <span data-lang="de">Handverlesen für Cottage-Gärtnerinnen</span>
@@ -161,10 +189,22 @@ span[data-lang], a[data-lang] { display: inline; }
 <span data-lang="de">Als Amazon-Partner verdiene ich an qualifizierten Käufen. &nbsp;·&nbsp; Alle mit (Werbung) markierten Links sind Affiliate-Links.</span>
 </div>
 
+<nav class="jump-nav" aria-label="Categories">
+<ul>
+<li><a href="#watering"><span data-lang="en">Watering Tools</span><span data-lang="de">Giesswerkzeug</span></a></li>
+<li><a href="#seeds"><span data-lang="en">Seeds</span><span data-lang="de">Samen</span></a></li>
+<li><a href="#books"><span data-lang="en">Books</span><span data-lang="de">Bücher</span></a></li>
+<li><a href="#greenhouses"><span data-lang="en">Greenhouses &amp; Sheds</span><span data-lang="de">Gewächshäuser</span></a></li>
+<li><a href="#planters"><span data-lang="en">Planters &amp; Pots</span><span data-lang="de">Töpfe</span></a></li>
+<li><a href="#home"><span data-lang="en">Home &amp; Living</span><span data-lang="de">Wohnen</span></a></li>
+<li><a href="#study"><span data-lang="en">Desk &amp; Study</span><span data-lang="de">Schreibtisch</span></a></li>
+</ul>
+</nav>
+
 <div class="intro">
 <h2>
-<span data-lang="en">Handpicked with care, not clicks.</span>
-<span data-lang="de">Mit Herz ausgewählt, nicht mit Algorithmus.</span>
+<span data-lang="en">Handpicked with care.</span>
+<span data-lang="de">Mit Herz ausgewählt.</span>
 </h2>
 <p>
 <span data-lang="en">I only share things I would use in my own garden. Click any link below to shop on Amazon UK — at no extra cost to you.</span>
@@ -176,7 +216,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ WATERING TOOLS ══════════════════ -->
 <section class="section" id="watering">
 <div class="section-header">
-<h3>&#129507; <span data-lang="en">Watering Tools</span><span data-lang="de">Giesswerkzeug</span></h3>
+<h3><span data-lang="en">Watering Tools</span><span data-lang="de">Giesswerkzeug</span></h3>
 <span class="section-tag"><span data-lang="en">Garden Essentials</span><span data-lang="de">Gartengrundausstattung</span></span>
 </div>
 <div class="grid-en">
@@ -204,7 +244,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ SEEDS ══════════════════ -->
 <section class="section" id="seeds">
 <div class="section-header">
-<h3>&#127807; <span data-lang="en">Seeds</span><span data-lang="de">Samen</span></h3>
+<h3><span data-lang="en">Seeds</span><span data-lang="de">Samen</span></h3>
 <span class="section-tag"><span data-lang="en">With Sowing Guide</span><span data-lang="de">Mit Aussaatanleitung</span></span>
 </div>
 <div class="grid-en" style="margin-bottom:2rem;">
@@ -246,7 +286,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ BOOKS ══════════════════ -->
 <section class="section" id="books">
 <div class="section-header">
-<h3>&#128218; <span data-lang="en">Books</span><span data-lang="de">Bücher</span></h3>
+<h3><span data-lang="en">Books</span><span data-lang="de">Bücher</span></h3>
 <span class="section-tag"><span data-lang="en">Cottage Garden Favourites</span><span data-lang="de">Cottage-Garten-Lieblinge</span></span>
 </div>
 <div class="grid-en">
@@ -271,7 +311,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ GREENHOUSES & TOOL SHEDS ══════════════════ -->
 <section class="section" id="greenhouses">
 <div class="section-header">
-<h3>&#127796; <span data-lang="en">Greenhouses &amp; Tool Sheds</span><span data-lang="de">Gewächshäuser &amp; Geräteschuppen</span></h3>
+<h3><span data-lang="en">Greenhouses &amp; Tool Sheds</span><span data-lang="de">Gewächshäuser &amp; Geräteschuppen</span></h3>
 <span class="section-tag"><span data-lang="en">Shelter for plants &amp; tools</span><span data-lang="de">Schutz für Pflanzen &amp; Geräte</span></span>
 </div>
 <div class="grid-en">
@@ -300,7 +340,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ PLANTERS & POTS ══════════════════ -->
 <section class="section" id="planters">
 <div class="section-header">
-<h3>&#127758; <span data-lang="en">Planters &amp; Pots</span><span data-lang="de">Pflanzgefässe &amp; Töpfe</span></h3>
+<h3><span data-lang="en">Planters &amp; Pots</span><span data-lang="de">Pflanzgefässe &amp; Töpfe</span></h3>
 <span class="section-tag"><span data-lang="en">Terracotta &amp; Clay</span><span data-lang="de">Terrakotta &amp; Ton</span></span>
 </div>
 <div class="grid-en">
@@ -330,7 +370,7 @@ span[data-lang], a[data-lang] { display: inline; }
 <!-- ══════════════════ HOME & LIVING ══════════════════ -->
 <section class="section" id="home">
 <div class="section-header">
-<h3>&#127968; <span data-lang="en">Home &amp; Living</span><span data-lang="de">Wohnen &amp; Leben</span></h3>
+<h3><span data-lang="en">Home &amp; Living</span><span data-lang="de">Wohnen &amp; Leben</span></h3>
 <span class="section-tag"><span data-lang="en">Bring the garden indoors</span><span data-lang="de">Den Garten ins Zuhause holen</span></span>
 </div>
 <div class="grid-en">
@@ -371,9 +411,9 @@ span[data-lang], a[data-lang] { display: inline; }
 </section>
 
   <!-- ══════════════════ BACK TO SCHOOL / STUDIUM ══════════════════ -->
-  <section class="section">
+  <section class="section" id="study">
     <div class="section-header">
-      <h3>&#127891; <span data-lang="en">Back to School &amp; Study</span><span data-lang="de">Zurück zur Schule &amp; Studium</span></h3>
+      <h3><span data-lang="en">Back to School &amp; Study</span><span data-lang="de">Zurück zur Schule &amp; Studium</span></h3>
       <span class="section-tag"><span data-lang="en">Cottage-Style Desk Essentials</span><span data-lang="de">Schreibtisch-Ausstattung im Cottage-Stil</span></span>
     </div>
     <div class="grid-en">
